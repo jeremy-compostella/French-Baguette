@@ -1,0 +1,200 @@
+#+OPTIONS: author:t timestamp:t ^:{} f:t H:5 p:t
+#+STARTUP: customtime hidestars indent inlineimages
+#+TITLE: French Baguette
+#+SUBTITLE: Application Note
+#+Author: Jeremy Compostella
+#+Email: jeremy.compostella@gmail.com
+#+DOCNUMBER: XXXXXX-1.0
+#+CONFIDENTIAL_LEVEL: Public
+#+Date: <2019-08-25 Sun 15:30>
+#+OUTPUT_NAME: Baguette-Recipe
+#+ODT_STYLES_FILE: "~/Documents/Templates/Intel.ott"
+#+STARTUP: customtime
+#+STARTUP: inlineimages
+
+#+name: gen_image
+#+begin_src bash :exports none :var in="" out=""
+  #!/bin/bash
+  # Inspired from by http://www.imagemagick.org/Usage/layers/#layer_prog
+  # documentation
+
+  center=0   # Start position of the center of the first image.
+  # This can be ANYTHING, as only relative changes are important.
+
+  for image in $in
+  do
+
+      # Add 70 to the previous images relative offset to add to each image
+      #
+      center=`convert xc: -format "%[fx: $center +170 ]" info:`
+
+      # read image, add fluff, and using centered padding/trim locate the
+      # center of the image at the next location (relative to the last).
+      #
+      convert "./images/IMG_$image.jpg" -thumbnail 240x240 \
+              -bordercolor Lavender -background black \
+              -pointsize 12  -density 96x96 +polaroid -resize 60% \
+              -gravity center -background None -extent 200x200 -trim \
+              -repage +${center}+0\! MIFF:-
+
+  done |
+      # read pipeline of positioned images, and merge together
+      convert -background white MIFF:- -layers merge +repage \
+              -bordercolor white -border 0x0 ./gen/$out.jpg
+#+end_src
+
+* Revision History
+
+|------------------+----------+-------------------|
+| Date             | Revision | Description       |
+| <2>              |   <c1>   | <7>               |
+|------------------+----------+-------------------|
+| <2019-08-25 Sun 15:30> |   1.0    | Initial release   |
+|------------------+----------+-------------------|
+
+* Introduction
+
+This document presents the recipe I use to make my own French
+Baguette.  I am not a baker but as a French I miss good bread so I
+make my own !
+
+This recipe is available on [[https://github.com/jeremy-compostella/French-Baguette][Github - French-Baguette]] under [[https://en.wikipedia.org/wiki/Creative_Commons_license][Creative
+Commons Public Domain License]].
+
+* Ingredients
+
+#+caption: Required Ingredients and Proportions
+| Ingredient | Quantity (g / ml) | Proportions (%)[fn:useless] |
+| <l>        |        <c>        |             <c>             |
+|------------+-------------------+-----------------------------|
+| Water      |        600        |            41.81            |
+| Dry Yeast  |        25         |            1.74             |
+| Salt       |        10         |            0.70             |
+| Flour      |        800        |            55.75            |
+|------------+-------------------+-----------------------------|
+| Total      |       1435        |           100.00            |
+#+tblfm: @>$2=vsum(@2..@-1)
+#+tblfm: $3=(($2 / @7$2) * 100);%.02f
+
+This is should give you a dough of 1435g which make four \approx 358g
+baguettes.  Or you can make small per person baguettes of \approx
+119g.
+
+Optionally, you can add anything you think you would like in your
+bread like seeds, nuts, honey, or even cheese.  I usually add 60g of
+whole poppy seeds or sunflower seeds.
+
+#+call: gen_image("20190824_160750 20190824_160823 20190824_160929", "ingredients")
+[[./gen/ingredients.jpg]]
+
+[fn:useless] I know, this is absolutely useless information
+
+* Day 1 -- Preparation (15 minutes)
+1. Mix the water, the dry yeast, the salt, 200g of flour and
+   optionally 60g of whole poppy seeds
+
+   #+call: gen_image("20190824_161302", "mix1")
+   [[./gen/mix1.jpg]]
+
+2. Add 300g of flour and mix
+
+   #+call: gen_image("20190824_161508 20190824_161522", "add-flour-1")
+   [[./gen/add-flour-1.jpg]]
+
+3. Add 200g of flour and *knead* (*change the tool*)
+
+   #+call: gen_image("20190824_161709 20190824_161846 20190824_162006", "add-flour-2")
+   [[./gen/add-flour-2.jpg]]
+
+4. Add 100g of flour
+
+   #+call: gen_image("20190824_162041 20190824_162309", "add-flour-3")
+   [[./gen/add-flour-3.jpg]]
+
+5. Cover and let it rest for \approx 12 hours
+
+   #+call: gen_image("20190824_162341", "let-it-rest")
+   [[./gen/let-it-rest.jpg]]
+
+* Day 2 -- Make and Bake Bread (60 minutes)
+1. Place a bowl of water in the oven, place the grill on top and
+   install the baguette mold
+
+   #+call: gen_image("20190825_104422 20190825_104435 20190825_105737", "bowl")
+   [[./gen/bowl.jpg]]
+
+2. Pre-heat the oven at 450\deg{}F
+
+   #+call: gen_image("20190825_104450", "pre-heat")
+   [[./gen/pre-heat.jpg]]
+
+3. Prepare your work station with flour: one area to knead and one to
+   let rest.
+
+   #+call: gen_image("20190825_104602", "prepare-work-station")
+   [[./gen/prepare-work-station.jpg]]
+
+   *Note*: I clearly put too much flour
+
+4. "Poor" the dough - you should actually have to pull it out (put
+   some flour on your hand before pulling out so that it does not
+   stick to your fingers)
+
+   #+call: gen_image("20190825_104612", "poor")
+   [[./gen/poor.jpg]]
+
+5. Knead for a few minutes and make a nice big ball
+
+   #+call: gen_image("20190825_104749 20190825_104825", "big-ball")
+   [[./gen/big-ball.jpg]]
+
+6. For four baguettes split the ball in pieces of \approx 300-350g
+
+   #+call: gen_image("20190825_104927 20190825_105659", "split")
+   [[./gen/split.jpg]]
+
+7. Knead each ball and try to add air in it by creating a hole and
+   close it leaving some air inside (repeat the operation 3 times per
+   ball).
+
+   #+call: gen_image("20190825_105140 20190825_105144", "add-air")
+   [[./gen/add-air.jpg]]
+
+8. Shape the ball into baguettes by rolling them with your hands
+
+   #+call: gen_image("20190825_105710 20190825_110521", "shape")
+   [[./gen/shape.jpg]]
+
+9. Let the baguettes rest there (on the hot oven) for 15 minutes so
+   that they dry a bit on the outside.  In the meantime, prepare a
+   pair of scissors, a knife and a small pan of water.
+
+   #+call: gen_image("20190825_111410", "tools")
+   [[./gen/tools.jpg]]
+
+10. 15 minutes later, make scars on the baguettes
+
+   #+call: gen_image("20190825_112132 20190825_112139 20190825_112152 20190825_112205", "scars")
+   [[./gen/scars.jpg]]
+
+11. Put the baguette in the oven, pour the water from the pan and
+    close the oven before the steam burn your face !
+
+   #+call: gen_image("20190825_112247 20190825_112253", "put-in-the-oven")
+   [[./gen/put-in-the-oven.jpg]]
+
+12. Bake for 30 minutes
+
+   #+call: gen_image("20190825_112312", "bake")
+   [[./gen/bake.jpg]]
+
+13. Once cooked, put the bread upside down on a grill for \approx 10
+    minutes to cool down.
+
+    #+call: gen_image("20190825_115357 20190825_174330", "done")
+    [[./gen/done.jpg]]
+
+*Et Voilà !*
+
+#+call: gen_image("20190825_131814", "degustation")
+[[./gen/degustation.jpg]]
