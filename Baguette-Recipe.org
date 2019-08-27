@@ -4,9 +4,9 @@
 #+SUBTITLE: Application Note
 #+Author: Jeremy Compostella
 #+Email: jeremy.compostella@gmail.com
-#+DOCNUMBER: XXXXXX-1.0
+#+DOCNUMBER: XXXXXX-1.1
 #+CONFIDENTIAL_LEVEL: Public
-#+Date: <2019-08-25 Sun 15:30>
+#+Date:  <2019-08-27 Tue 13:44>
 #+OUTPUT_NAME: Baguette-Recipe
 #+ODT_STYLES_FILE: "~/Documents/Templates/Intel.ott"
 #+STARTUP: customtime
@@ -44,15 +44,22 @@
 #+end_src
 
 * Revision History
+:PROPERTIES:
+:UNNUMBERED: t
+:END:
 
-|------------------+----------+-------------------|
-| Date             | Revision | Description       |
-| <2>              |   <c1>   | <7>               |
-|------------------+----------+-------------------|
-| <2019-08-25 Sun 15:30> |   1.0    | Initial release   |
-|------------------+----------+-------------------|
+|---------------------------+----------+----------------------|
+| Date                      | Revision | Description          |
+| <2>                       |   <c1>   | <7>                  |
+|---------------------------+----------+----------------------|
+| <2019-08-27 Tue 13:44>    |   1.1    | Water should be warm |
+| <2019-08-25 Sun 15:30>    |   1.0    | Initial release      |
+|---------------------------+----------+----------------------|
 
 * Introduction
+:PROPERTIES:
+:UNNUMBERED: t
+:END:
 
 This document presents the recipe I use to make my own French
 Baguette.  I am not a baker but as a French I miss good bread so I
