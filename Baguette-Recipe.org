@@ -64,15 +64,15 @@ Commons Public Domain License]].
 * Ingredients
 
 #+caption: Required Ingredients and Proportions
-| Ingredient | Quantity (g / ml) | Proportions (%)[fn:useless] |
-| <l>        |        <c>        |             <c>             |
-|------------+-------------------+-----------------------------|
-| Water      |        600        |            41.81            |
-| Dry Yeast  |        25         |            1.74             |
-| Salt       |        10         |            0.70             |
-| Flour      |        800        |            55.75            |
-|------------+-------------------+-----------------------------|
-| Total      |       1435        |           100.00            |
+| Ingredient   | Quantity (g / ml) | Proportions (%)[fn:useless] |
+| <l>          |        <c>        |             <c>             |
+|--------------+-------------------+-----------------------------|
+| Water (warm) |        600        |            41.81            |
+| Dry Yeast    |        25         |            1.74             |
+| Salt         |        10         |            0.70             |
+| Flour        |        800        |            55.75            |
+|--------------+-------------------+-----------------------------|
+| Total        |       1435        |           100.00            |
 #+tblfm: @>$2=vsum(@2..@-1)
 #+tblfm: $3=(($2 / @7$2) * 100);%.02f
 
@@ -90,8 +90,8 @@ whole poppy seeds or sunflower seeds.
 [fn:useless] I know, this is absolutely useless information
 
 * Day 1 -- Preparation (15 minutes)
-1. Mix the water, the dry yeast, the salt, 200g of flour and
-   optionally 60g of whole poppy seeds
+1. Mix the warm water (30s in the microwave), the dry yeast, the
+   salt, 200g of flour and optionally 60g of whole poppy seeds
 
    #+call: gen_image("20190824_161302", "mix1")
    [[./gen/mix1.jpg]]
